@@ -1,5 +1,6 @@
 #Inviter
-_I haven't tested this plugin too much, you can always 
+_I haven't tested this plugin too much, if you see a big or want to add a new feature you can always create an [issue](https://bitbucket.org/Polvora/inviter/issues/new)._
+
 Send Steam group invites from the game chat.
 
 ###Client Commands
@@ -18,7 +19,7 @@ Send Steam group invites from the game chat.
 * `in_adminflags` Administrator flags to bypass the restrictions. _(default = "b")_
 * `in_allcaninvitethemselves` Allows everybody to send invites to them themselves. _(default = 1)_
 * `in_allcaninviteothers` Allows everybody to send invites to other clients. _(default = 0)_
-* `in_timebetweeninvites` Time between invites that non-admins must wait before sending another one. _(default = 240)_
+* `in_timebetweeninvites` Time (in seconds) between invites that non-admins must wait before sending another one. _(default = 240)_
 
 ### Install
 #####Requirements
@@ -34,6 +35,6 @@ Compiled version: [inviter.smx](https://bitbucket.org/Polvora/inviter/downloads/
 If you want to compile the code yourself you have to add the include file `steamcore.inc` (from SteamCore, duh) inside `scripting/include` and then compile. _(You can't use includes with the online compiler)_
 
 > ###Changelog
-> [04/02/2015] v1.0 
+> [11/05/2015] v1.0 
 
 > * Initial Release.
