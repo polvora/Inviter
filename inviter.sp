@@ -4,7 +4,7 @@
 #include <steamcore>
 
 #define PLUGIN_URL ""
-#define PLUGIN_VERSION "1.0"
+#define PLUGIN_VERSION "1.1"
 #define PLUGIN_NAME "Inviter"
 #define PLUGIN_AUTHOR "Statik"
 
@@ -63,9 +63,9 @@ public Action:cmdInvite(client, args)
 			ReplyToCommand(client, "\x07FFF047You must wait \x01%i \x07FFF047seconds or less to send another invite.", GetConVarInt(cvarTimeBetweenInvites));
 			return Plugin_Handled;
 		}
-		new Float:interval = GetConVarInt(cvarTimeBetweenInvites);
+		new interval = GetConVarInt(cvarTimeBetweenInvites);
 		PushArrayCell(disabledClients, id);
-		CreateTimer(interval, cooldown, id);
+		CreateTimer(Float:interval, cooldown, id);
 	}
 	
 	if (args == 0)
