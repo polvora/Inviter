@@ -38,3 +38,7 @@ If you want to compile the code yourself you have to add the include file `steam
 > [11/05/2015] v1.0 
 
 > * Initial Release.
+
+> [18/05/2015] v1.1
+
+> Updated to the new error codes from SteamCore.

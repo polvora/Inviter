@@ -138,7 +138,7 @@ public callback(client, bool:success, errorCode, any:data)
 		if (errorCode == 0x01) ReplyToCommand(client, "\x07FFF047Server is busy with another task at this time, try again in a few seconds.");
 		else if (errorCode == 0x02) ReplyToCommand(client, "\x07FFF047There was a timeout in your request, try again.");
 		else if (errorCode == 0x23) ReplyToCommand(client, "\x07FFF047Session expired, retry to reconnect.");
-		else if (errorCode == 0x25) ReplyToCommand(client, "\x07FFF047Target has already received an invite or is already on the group.");
+		else if (errorCode == 0x27) ReplyToCommand(client, "\x07FFF047Target has already received an invite or is already on the group.");
 		else ReplyToCommand(client, "\x07FFF047There was an error \x010x%02x \x07FFF047while sending your invite :(", errorCode);
 	}
 }
