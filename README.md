@@ -9,7 +9,7 @@ Send Steam group invites from the game chat.
 
 ### ConVars
 ####Mandatory
-* `in_steamgroupid` ID of the Steam Group where players will be invited._(default = "")_
+* `in_steamgroupid` ID of the Steam Group where players will be invited, [How to get your group ID](https://support.multiplay.co.uk/support/solutions/articles/1000202859-how-can-i-find-my-steam-group-64-id-)._(default = "")_
 
 #####From SteamCore
 * `sc_username` Steam account username.
