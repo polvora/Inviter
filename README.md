@@ -1,5 +1,5 @@
 #Inviter
-_I haven't tested this plugin too much, if you see a bug or want to add a new feature you can always create an [issue](https://bitbucket.org/Polvora/inviter/issues/new)._
+_I haven't tested this plugin too much, if you see a bug or want to add a new feature you can always create an [issue](https://github.com/polvora/Inviter/issues/new)._
 
 Send Steam group invites from the game chat.
 
