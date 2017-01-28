@@ -4,7 +4,7 @@
 #include <steamcore>
 
 #define PLUGIN_URL ""
-#define PLUGIN_VERSION "1.1"
+#define PLUGIN_VERSION "1.2"
 #define PLUGIN_NAME "Inviter"
 #define PLUGIN_AUTHOR "Statik"
 
@@ -63,52 +63,58 @@ public Action:cmdInvite(client, args)
 			ReplyToCommand(client, "\x07FFF047You must wait \x01%i \x07FFF047seconds or less to send another invite.", GetConVarInt(cvarTimeBetweenInvites));
 			return Plugin_Handled;
 		}
-		new interval = GetConVarInt(cvarTimeBetweenInvites);
 		PushArrayCell(disabledClients, id);
-		CreateTimer(Float:interval, cooldown, id);
+		CreateTimer(GetConVarFloat(cvarTimeBetweenInvites), cooldown, id);
 	}
 	
-	if (args == 0)
+	switch(args)
 	{
-		if (client == 0)
+		case 0:
 		{
-			ReplyToCommand(client, "You cannot invite a server to a Steam group.");
-			return Plugin_Handled;
-		}
-		if (isAdmin || GetConVarBool(cvarAllInviteThemselves))
-		{
-			new String:steamID64[32];
-			GetClientAuthId(client, AuthId_SteamID64, steamID64, sizeof steamID64);
-			sources[client] = GetCmdReplySource();
-			SteamGroupInvite(client, steamID64, steamGroup, callback);
-			return Plugin_Handled;
-		}
-		ReplyToCommand(client, "\x07FFF047You do not have access to this command.");
-		return Plugin_Handled;
-	}
-	else if (args == 1)
-	{
-		if (isAdmin || GetConVarBool(cvarAllInviteOthers))
-		{
-			decl String:arg[64];
-			GetCmdArg(1, arg, sizeof arg);
-			new target = FindTarget(client, arg, true, false);
-			if (target == -1)
+			if (client == 0)
 			{
-				decl String:buffer[32];
-				GetCmdArg(0, buffer, sizeof(buffer));
-				ReplyToCommand(client, "\x07FFF047Incorrect target, usage: \x01%s [#userid|name]", buffer);
+				ReplyToCommand(client, "You cannot invite a server to a Steam group.");
 				return Plugin_Handled;
 			}
-			new String:steamID64[32];
-			GetClientAuthId(target, AuthId_SteamID64, steamID64, sizeof steamID64);
-			sources[client] = GetCmdReplySource();
-			SteamGroupInvite(client, steamID64, steamGroup, callback);
-			return Plugin_Handled;
+			if (isAdmin || GetConVarBool(cvarAllInviteThemselves))
+			{
+				new String:steamID64[32];
+				GetClientAuthId(client, AuthId_SteamID64, steamID64, sizeof steamID64);
+				sources[client] = GetCmdReplySource();
+				SteamGroupInvite(client, steamID64, steamGroup, callback);
+				return Plugin_Handled;
+			}
+			
+			ReplyToCommand(client, "\x07FFF047You do not have access to this command.");
+			return Plugin_Handled;			
 		}
-		ReplyToCommand(client, "\x07FFF047You are not allowed to invite other people.");
-		return Plugin_Handled;
+		
+		case 1:
+		{
+			if (isAdmin || GetConVarBool(cvarAllInviteOthers))
+			{
+				decl String:arg[64];
+				GetCmdArg(1, arg, sizeof arg);
+				new target = FindTarget(client, arg, true, false);
+				if (target == -1)
+				{
+					decl String:buffer[32];
+					GetCmdArg(0, buffer, sizeof(buffer));
+					ReplyToCommand(client, "\x07FFF047Incorrect target, usage: \x01%s [#userid|name]", buffer);
+					return Plugin_Handled;
+				}
+				new String:steamID64[32];
+				GetClientAuthId(target, AuthId_SteamID64, steamID64, sizeof steamID64);
+				sources[client] = GetCmdReplySource();
+				SteamGroupInvite(client, steamID64, steamGroup, callback);
+				return Plugin_Handled;
+			}
+			
+			ReplyToCommand(client, "\x07FFF047You are not allowed to invite other people.");
+			return Plugin_Handled;						
+		}	
 	}
+	
 	ReplyToCommand(client, "\x07FFF047Incorrect syntax, usage: \x01%s [#userid|name]");
 	return Plugin_Handled;
 }
@@ -135,11 +141,14 @@ public callback(client, bool:success, errorCode, any:data)
 			if ((i = FindValueInArray(disabledClients, id)) != -1)
 				RemoveFromArray(disabledClients, i);
 		}
-		if (errorCode == 0x01) ReplyToCommand(client, "\x07FFF047Server is busy with another task at this time, try again in a few seconds.");
-		else if (errorCode == 0x02) ReplyToCommand(client, "\x07FFF047There was a timeout in your request, try again.");
-		else if (errorCode == 0x23) ReplyToCommand(client, "\x07FFF047Session expired, retry to reconnect.");
-		else if (errorCode == 0x27) ReplyToCommand(client, "\x07FFF047Target has already received an invite or is already on the group.");
-		else ReplyToCommand(client, "\x07FFF047There was an error \x010x%02x \x07FFF047while sending your invite :(", errorCode);
+		switch(errorCode)
+		{
+			case 0x01:	ReplyToCommand(client, "\x07FFF047Server is busy with another task at this time, try again in a few seconds.");
+			case 0x02:	ReplyToCommand(client, "\x07FFF047There was a timeout in your request, try again.");
+			case 0x23:	ReplyToCommand(client, "\x07FFF047Session expired, retry to reconnect.");
+			case 0x27:	ReplyToCommand(client, "\x07FFF047Target has already received an invite or is already on the group.");
+			default:	ReplyToCommand(client, "\x07FFF047There was an error \x010x%02x \x07FFF047while sending your invite :(", errorCode);
+		}
 	}
 }
 
