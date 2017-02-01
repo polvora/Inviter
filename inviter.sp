@@ -29,12 +29,12 @@ new ReplySource:sources[32];
 public OnPluginStart()
 {
 	// Cvars
-	CreateConVar("inviter_version", PLUGIN_VERSION, "Force Picker Version", FCVAR_PLUGIN | FCVAR_SPONLY | FCVAR_DONTRECORD | FCVAR_NOTIFY);
-	cvarGroupID = CreateConVar("in_steamgroupid", "", "Group id where people is going to be invited.", FCVAR_PLUGIN);
-	cvarAdminFlags = CreateConVar("in_adminflags", "b", "Administrator flags to bypass the restrictions.", FCVAR_PLUGIN);
-	cvarAllInviteThemselves = CreateConVar("in_allcaninvitethemselves.", "1", "Allows everybody to send invites to them themselves.", FCVAR_PLUGIN, true, 0.0, true, 1.0);
-	cvarAllInviteOthers = CreateConVar("in_allcaninviteothers.", "0", "Allows everybody to send invites to other clients.", FCVAR_PLUGIN, true, 0.0, true, 1.0);
-	cvarTimeBetweenInvites = CreateConVar("in_timebetweeninvites", "240", "Time between invites that non-admins must wait to send more invites.", FCVAR_PLUGIN, true, 0.0, true, 7200.0);
+	CreateConVar("inviter_version", PLUGIN_VERSION, "Force Picker Version", FCVAR_SPONLY | FCVAR_DONTRECORD | FCVAR_NOTIFY);
+	cvarGroupID = CreateConVar("in_steamgroupid", "", "Group id where people is going to be invited.", 0);
+	cvarAdminFlags = CreateConVar("in_adminflags", "b", "Administrator flags to bypass the restrictions.", 0);
+	cvarAllInviteThemselves = CreateConVar("in_allcaninvitethemselves.", "1", "Allows everybody to send invites to them themselves.", 0, true, 0.0, true, 1.0);
+	cvarAllInviteOthers = CreateConVar("in_allcaninviteothers.", "0", "Allows everybody to send invites to other clients.", 0, true, 0.0, true, 1.0);
+	cvarTimeBetweenInvites = CreateConVar("in_timebetweeninvites", "240", "Time between invites that non-admins must wait to send more invites.", 0, true, 0.0, true, 7200.0);
 	
 	RegConsoleCmd("sm_invite", cmdInvite, "Sends a group invite");
 
