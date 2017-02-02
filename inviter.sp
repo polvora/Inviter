@@ -4,7 +4,7 @@
 #include <steamcore>
 
 #define PLUGIN_URL ""
-#define PLUGIN_VERSION "1.2"
+#define PLUGIN_VERSION "1.3"
 #define PLUGIN_NAME "Inviter"
 #define PLUGIN_AUTHOR "Statik"
 
