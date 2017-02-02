@@ -14,7 +14,6 @@ Send Steam group invites from the game chat.
 #####From SteamCore
 * `sc_username` Steam account username.
 * `sc_password` Steam account password.
-
 #### Optional
 * `in_adminflags` Administrator flags to bypass the restrictions. _(default = "b")_
 * `in_allcaninvitethemselves` Allows everybody to send invites to them themselves. _(default = 1)_
@@ -30,7 +29,7 @@ _**DON'T FORGET TO SETUP STEAMCORE**_
 When you fulfil the requirements, just install as any other plugin, copy announcer.smx inside the plugins folder in your sourcemod directory.
 
 ### Download
-Compiled version: [inviter.smx](https://bitbucket.org/Polvora/inviter/downloads/inviter.smx). Also available in downloads section.  
+Compiled versions: [inviter.smx](https://github.com/polvora/Inviter/releases).
 
 If you want to compile the code yourself you have to add the include file `steamcore.inc` (from SteamCore, duh) inside `scripting/include` and then compile. _(You can't use includes with the online compiler)_
 
@@ -42,3 +41,11 @@ If you want to compile the code yourself you have to add the include file `steam
 > [18/05/2015] v1.1
 
 > * Updated to the new error codes from SteamCore.
+
+> [29/01/2017] v1.2
+
+> * Minor optmizations.
+
+> [02/02/2017] v1.3
+
+> * Minor code updating.
