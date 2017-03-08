@@ -14,6 +14,7 @@ Send Steam group invites from the game chat.
 #####From SteamCore
 * `sc_username` Steam account username.
 * `sc_password` Steam account password.
+
 #### Optional
 * `in_adminflags` Administrator flags to bypass the restrictions. _(default = "b")_
 * `in_allcaninvitethemselves` Allows everybody to send invites to them themselves. _(default = 1)_
