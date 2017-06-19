@@ -3,7 +3,7 @@
 #include <sourcemod>
 #include <steamcore>
 
-#define PLUGIN_URL ""
+#define PLUGIN_URL "https://github.com/polvora/Inviter"
 #define PLUGIN_VERSION "1.3"
 #define PLUGIN_NAME "Inviter"
 #define PLUGIN_AUTHOR "Statik"
@@ -154,6 +154,7 @@ public callback(client, bool:success, errorCode, any:data)
 
 public bool:IsClientAdmin(client)
 {
+	if (client == 0) return true;
 	decl String:strFlags[32];
 	GetConVarString(cvarAdminFlags, strFlags, sizeof strFlags);
 	new flags = ReadFlagString(strFlags);
