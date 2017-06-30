@@ -4,7 +4,7 @@
 #include <steamcore>
 
 #define PLUGIN_URL "https://github.com/polvora/Inviter"
-#define PLUGIN_VERSION "1.4-working"
+#define PLUGIN_VERSION "1.4"
 #define PLUGIN_NAME "Inviter"
 #define PLUGIN_AUTHOR "Statik"
 
