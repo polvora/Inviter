@@ -39,7 +39,7 @@ public OnPluginStart()
 	cvarAllInviteThemselves = CreateConVar("in_allcaninvitethemselves", "1", "Allows everybody to send invites to them themselves.", 0, true, 0.0, true, 1.0);
 	cvarAllInviteOthers = CreateConVar("in_allcaninviteothers", "0", "Allows everybody to send invites to other clients.", 0, true, 0.0, true, 1.0);
 	cvarTimeBetweenInvites = CreateConVar("in_timebetweeninvites", "240", "Time between invites that non-admins must wait to send more invites.", 0, true, 0.0, true, 7200.0);
-	cvarRemoveFriends = CreateConVar("in_removefriends", "1", "Remove mfriends after inviting them to group.", 0, true, 0.0, true, 1.0);
+	cvarRemoveFriends = CreateConVar("in_removefriends", "1", "Removes friends after inviting them to group.", 0, true, 0.0, true, 1.0);
 	
 	RegConsoleCmd("sm_invite", cmdInvite, "Sends a group invite");
 

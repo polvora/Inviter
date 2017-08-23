@@ -22,6 +22,7 @@ _Use alphanumeric user/pass, max length: 32 characters._
 * `in_allcaninvitethemselves` Allows everybody to send invites to them themselves. _(default = 1)_
 * `in_allcaninviteothers` Allows everybody to send invites to other clients. _(default = 0)_
 * `in_timebetweeninvites` Time (in seconds) between invites that non-admins must wait before sending another one. _(default = 240)_
+* `in_removefriends` Removes friends after inviting them to group. _(default = 1)_
 
 ### Install
 ##### Requirements
@@ -52,3 +53,12 @@ If you want to compile the code yourself you have to add the include file `steam
 > [02/02/2017] v1.3
 
 > * Minor code updating.
+
+> [30/06/2016] v1.4
+
+> * Fixes typo in cvar declaration.
+> * Fixes bug when trying to invite from console.
+
+> [21/08/2017] v1.5
+
+> * Updated to the new Steam invite policies.
