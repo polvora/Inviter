@@ -11,12 +11,6 @@ Send Steam group invites from the game chat.
 #### Mandatory
 * `in_steamgroupid` ID of the Steam Group where players will be invited, [How to get your group ID](https://support.multiplay.co.uk/support/solutions/articles/1000202859-how-can-i-find-my-steam-group-64-id-)._(default = "")_
 
-##### From SteamCore
-* `sc_username` Steam account username.  
-* `sc_password` Steam account password.
-
-_Use alphanumeric user/pass, max length: 32 characters._
-
 #### Optional
 * `in_adminflags` Administrator flags to bypass the restrictions. _(default = "b")_
 * `in_allcaninvitethemselves` Allows everybody to send invites to them themselves. _(default = 1)_
